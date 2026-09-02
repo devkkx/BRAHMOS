@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BRAHMOS BHAWAN MANAGEMENT SYSTEM</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .hero-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      text-align: center;
+    }
+    .hero-card {
+      max-width: 800px;
+      width: 100%;
+      padding: 50px;
+    }
+    .portal-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .portal-card {
+      padding: 30px;
+      text-align: left;
+      transition: transform 0.25s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .portal-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent-primary);
+    }
+    .portal-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero-container">
+    <div class="glass-panel hero-card">
+      <div style="display: inline-block; font-size: 3rem; margin-bottom: 10px;">🏠</div>
+      <h1 style="font-size: 2.5rem; margin-bottom: 12px; background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        BRAHMOS BHAWAN MANAGEMENT SYSTEM
+      </h1>
+      <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+        Official Mess Food Preference & Complaint Management Portal for Boarders and Administrators of BRAHMOS BHAWAN (A-Block & C-Block).
+      </p>
+
+      <div class="portal-options">
+        <a href="/login.html" class="glass-panel portal-card">
+          <div class="portal-icon">👨‍🎓</div>
+          <h3 style="margin-bottom: 8px;">Boarder / Student Portal</h3>
+          <p style="font-size: 0.9rem;">Select daily Veg/Non-Veg mess meals, view selection history, and privately submit hostel complaints with photo evidence.</p>
+          <div style="margin-top: 20px; color: var(--accent-primary); font-weight: 700; font-size: 0.9rem;">
+            Sign In as Student &rarr;
+          </div>
+        </a>
+
+        <a href="/login.html" class="glass-panel portal-card">
+          <div class="portal-icon">🛡️</div>
+          <h3 style="margin-bottom: 8px;">Admin & Warden Portal</h3>
+          <p style="font-size: 0.9rem;">View date-wise & meal-wise cook counts, export Excel reports, manage approved boarder whitelist, and resolve student complaints.</p>
+          <div style="margin-top: 20px; color: var(--veg-color); font-weight: 700; font-size: 0.9rem;">
+            Sign In as Admin &rarr;
+          </div>
+        </a>
+      </div>
+
+      <div style="margin-top: 40px; border-top: 1px solid var(--border-color); padding-top: 20px; font-size: 0.85rem; color: var(--text-muted);">
+        Demo Accounts: <strong>Student</strong> (rahul@brahmos.ac.in / student123) | <strong>Admin</strong> (admin@brahmos.ac.in / admin123)
+      </div>
+    </div>
+  </div>
+</body>
+</html>

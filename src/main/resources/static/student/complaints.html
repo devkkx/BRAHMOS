@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Complaints - BRAHMOS BHAWAN</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand-icon">🏠</div>
+        <div>
+          <div class="sidebar-brand-title">BRAHMOS</div>
+          <div class="sidebar-brand-subtitle">Bhawan Hostel</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/student/dashboard.html" class="nav-link">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="/student/food-preference.html" class="nav-link">
+          <span class="nav-icon">🍛</span>
+          <span class="nav-text">Food Preference</span>
+        </a>
+        <a href="/student/complaints.html" class="nav-link active">
+          <span class="nav-icon">🚨</span>
+          <span class="nav-text">My Complaints</span>
+        </a>
+        <a href="/student/profile.html" class="nav-link">
+          <span class="nav-icon">👤</span>
+          <span class="nav-text">My Profile</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-profile-badge">
+          <div class="avatar user-avatar-display">U</div>
+          <div class="user-info">
+            <div class="user-name user-name-display">Loading...</div>
+            <div class="user-role user-room-display">Boarder</div>
+          </div>
+          <a href="#" class="btn-logout" title="Logout" style="color: var(--text-muted); text-decoration: none;">🚪</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <h1 class="page-title">My Hostel Complaints</h1>
+        <div class="topbar-actions">
+          <button class="btn btn-primary" id="btn-open-complaint-modal">
+            <span>➕ Report a Problem</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="content-body">
+        <!-- Privacy Notice -->
+        <div class="glass-panel" style="padding: 16px 20px; border-left: 4px solid var(--veg-color); font-size: 0.88rem; color: var(--text-secondary);">
+          🔒 <strong>Privacy Assured:</strong> You can view only your own submitted complaints and tracking updates. Other boarders cannot access your reports.
+        </div>
+
+        <!-- Complaints Table -->
+        <div class="glass-panel" style="padding: 24px;">
+          <div class="table-responsive">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Category</th>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Photo Evidence</th>
+                  <th>Priority</th>
+                  <th>Status</th>
+                  <th>Admin Remarks</th>
+                </tr>
+              </thead>
+              <tbody id="complaints-table-body">
+                <tr>
+                  <td colspan="8" style="text-align: center; padding: 30px; color: var(--text-muted);">
+                    Loading your complaints...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Submit Complaint Modal -->
+  <div class="modal-backdrop" id="complaint-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>🚨 Report a Problem</h3>
+        <button class="modal-close" id="btn-close-complaint-modal">&times;</button>
+      </div>
+      <form id="complaint-form">
+        <div class="form-group">
+          <label class="form-label" for="complaint-category">Problem Category</label>
+          <select id="complaint-category" class="form-control" required>
+            <option value="ROOM">🛏 Room Maintenance</option>
+            <option value="BATHROOM">🚿 Bathroom / Plumbing</option>
+            <option value="ELECTRICITY">💡 Electricity / Wiring</option>
+            <option value="WIFI">📶 Wi-Fi / Internet</option>
+            <option value="MESS">🍛 Mess / Food Quality</option>
+            <option value="CLEANING">🧹 Housekeeping / Cleaning</option>
+            <option value="WATER">🚰 Drinking Water</option>
+            <option value="MAINTENANCE">🔧 General Repair</option>
+            <option value="OTHER">❓ Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="complaint-title">Problem Title</label>
+          <input type="text" id="complaint-title" class="form-control" placeholder="e.g. Fan making noise in Room 101" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="complaint-description">Detailed Description</label>
+          <textarea id="complaint-description" class="form-control" rows="3" placeholder="Describe the issue clearly..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="complaint-image-url">Problem Photo / Evidence URL (Optional)</label>
+          <input type="url" id="complaint-image-url" class="form-control" placeholder="https://example.com/photo.jpg or image link">
+          <span style="font-size: 0.75rem; color: var(--text-muted);">Provide a photo link so the Warden/Admin can inspect the damage.</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="complaint-priority">Priority Level</label>
+          <select id="complaint-priority" class="form-control">
+            <option value="LOW">Low</option>
+            <option value="MEDIUM" selected>Medium</option>
+            <option value="HIGH">High</option>
+            <option value="URGENT">🚨 Urgent</option>
+          </select>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 20px;">
+          <button type="button" class="btn btn-secondary" onclick="document.getElementById('complaint-modal').classList.remove('active')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Submit Problem</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/student.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - BRAHMOS BHAWAN</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <style>
+    .upload-box {
+      border: 2px dashed var(--accent-primary);
+      background: rgba(99, 102, 241, 0.05);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .upload-box:hover {
+      background: rgba(99, 102, 241, 0.12);
+      border-color: #818cf8;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand-icon">🛡️</div>
+        <div>
+          <div class="sidebar-brand-title">BRAHMOS</div>
+          <div class="sidebar-brand-subtitle">Admin Control</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/admin/dashboard.html" class="nav-link active">
+          <span class="nav-icon">📊</span>
+          <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="/admin/food-management.html" class="nav-link">
+          <span class="nav-icon">🍛</span>
+          <span class="nav-text">Food Management</span>
+        </a>
+        <a href="/admin/complaints.html" class="nav-link">
+          <span class="nav-icon">🚨</span>
+          <span class="nav-text">Complaints Desk</span>
+        </a>
+        <a href="/admin/students.html" class="nav-link">
+          <span class="nav-icon">👥</span>
+          <span class="nav-text">Boarders Directory</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-profile-badge">
+          <div class="avatar user-avatar-display" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">A</div>
+          <div class="user-info">
+            <div class="user-name user-name-display">Warden Admin</div>
+            <div class="user-role">Hostel Administrator</div>
+          </div>
+          <a href="#" class="btn-logout" title="Logout" style="color: var(--text-muted); text-decoration: none;">🚪</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <h1 class="page-title">Admin Dashboard & Cook Count Control</h1>
+        <div class="topbar-actions">
+          <span class="date-pill">🛡️ Warden Control Mode</span>
+        </div>
+      </header>
+
+      <div class="content-body">
+        <!-- 4 Separate Meal & Preference Stats Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px;">
+          <div class="glass-panel stat-card" style="border-left: 4px solid var(--veg-color);">
+            <div class="stat-icon emerald">☀️</div>
+            <div>
+              <div class="stat-value" id="stat-today-lunch-veg" style="color: var(--veg-color);">0</div>
+              <div class="stat-label">Lunch - Veg Count</div>
+            </div>
+          </div>
+
+          <div class="glass-panel stat-card" style="border-left: 4px solid var(--nonveg-color);">
+            <div class="stat-icon rose">☀️</div>
+            <div>
+              <div class="stat-value" id="stat-today-lunch-nonveg" style="color: var(--nonveg-color);">0</div>
+              <div class="stat-label">Lunch - Non-Veg Count</div>
+            </div>
+          </div>
+
+          <div class="glass-panel stat-card" style="border-left: 4px solid var(--veg-color);">
+            <div class="stat-icon emerald">🌙</div>
+            <div>
+              <div class="stat-value" id="stat-today-dinner-veg" style="color: var(--veg-color);">0</div>
+              <div class="stat-label">Dinner - Veg Count</div>
+            </div>
+          </div>
+
+          <div class="glass-panel stat-card" style="border-left: 4px solid var(--nonveg-color);">
+            <div class="stat-icon rose">🌙</div>
+            <div>
+              <div class="stat-value" id="stat-today-dinner-nonveg" style="color: var(--nonveg-color);">0</div>
+              <div class="stat-label">Dinner - Non-Veg Count</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pre-Approved Boarders Excel Upload Section -->
+        <div class="glass-panel" style="padding: 28px; margin-bottom: 24px; border-left: 4px solid var(--accent-primary);">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 16px;">
+            <div>
+              <h3 style="font-size: 1.25rem;">📤 Upload Pre-Approved Boarders Excel File</h3>
+              <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
+                Upload an Excel file containing boarder <strong>Name</strong> and <strong>Email ID</strong>. Only students whose Name & Email match this roster can register!
+              </p>
+            </div>
+            <span class="badge badge-progress" style="font-size: 0.85rem;">🔒 Lowercase Email Guard Enforced</span>
+          </div>
+
+          <form id="whitelist-upload-form" style="display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center;">
+            <div class="upload-box" onclick="document.getElementById('whitelist-file-input').click()">
+              <div style="font-size: 2rem; margin-bottom: 8px;">📑</div>
+              <div style="font-weight: 700; color: var(--text-primary);" id="upload-file-label">
+                Click to browse or drop Excel file (.xlsx / .xls)
+              </div>
+              <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">
+                Excel columns: <code>Name</code> | <code>Email</code> (case-insensitive Name, lowercase Email required)
+              </div>
+              <input type="file" id="whitelist-file-input" accept=".xlsx, .xls" style="display: none;" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="height: 100%; padding: 0 28px; font-size: 1rem;">
+              <span>📤 Upload & Activate Whitelist</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Quick Action Panels -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+          <div class="glass-panel" style="padding: 24px;">
+            <h3>🍛 Mess Cook Count Summary</h3>
+            <p style="font-size: 0.88rem; margin-top: 6px; margin-bottom: 20px;">
+              View exact meal preparation numbers for Lunch (Veg/Non-Veg) and Dinner (Veg/Non-Veg) or export reports for kitchen staff.
+            </p>
+            <a href="/admin/food-management.html" class="btn btn-primary">
+              <span>Go to Food Management &rarr;</span>
+            </a>
+          </div>
+
+          <div class="glass-panel" style="padding: 24px;">
+            <h3>🚨 Hostel Maintenance & Complaints</h3>
+            <p style="font-size: 0.88rem; margin-top: 6px; margin-bottom: 20px;">
+              Review boarder complaints, inspect photo evidence, update status, and add administrative remarks.
+            </p>
+            <a href="/admin/complaints.html" class="btn btn-primary">
+              <span>Go to Complaints Desk &rarr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

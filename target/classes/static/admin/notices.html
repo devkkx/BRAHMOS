@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notice Board - BRAHMOS BHAWAN Admin</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand-icon">🛡️</div>
+        <div>
+          <div class="sidebar-brand-title">BRAHMOS</div>
+          <div class="sidebar-brand-subtitle">Admin Control</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/admin/dashboard.html" class="nav-link">
+          <span class="nav-icon">📊</span>
+          <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="/admin/notices.html" class="nav-link active">
+          <span class="nav-icon">📢</span>
+          <span class="nav-text">Notice Board</span>
+        </a>
+        <a href="/admin/food-management.html" class="nav-link">
+          <span class="nav-icon">🍛</span>
+          <span class="nav-text">Food Management</span>
+        </a>
+        <a href="/admin/complaints.html" class="nav-link">
+          <span class="nav-icon">🚨</span>
+          <span class="nav-text">Complaints Desk</span>
+        </a>
+        <a href="/admin/students.html" class="nav-link">
+          <span class="nav-icon">👥</span>
+          <span class="nav-text">Boarders Directory</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-profile-badge">
+          <div class="avatar user-avatar-display" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">A</div>
+          <div class="user-info">
+            <div class="user-name user-name-display">Warden Admin</div>
+            <div class="user-role">Hostel Administrator</div>
+          </div>
+          <a href="#" class="btn-logout" title="Logout" style="color: var(--text-muted); text-decoration: none;">🚪</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <h1 class="page-title">📢 Hostel Notice Board Management</h1>
+        <div class="topbar-actions">
+          <button class="btn btn-primary" id="btn-open-notice-modal">
+            <span>➕ Publish New Announcement</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="content-body">
+        <!-- Published Notices Cards / List -->
+        <div class="glass-panel" style="padding: 24px;">
+          <h3 style="margin-bottom: 20px;">📜 Active Published Announcements</h3>
+          <div id="admin-notices-container" style="display: flex; flex-direction: column; gap: 16px;">
+            <p style="color: var(--text-muted); text-align: center; padding: 30px;">Loading published notices...</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Create Notice Modal -->
+  <div class="modal-backdrop" id="admin-notice-modal">
+    <div class="modal-card" style="max-width: 580px;">
+      <div class="modal-header">
+        <h3>📢 Post New Hostel Notice</h3>
+        <button class="modal-close" id="btn-close-notice-modal">&times;</button>
+      </div>
+      <form id="admin-notice-form">
+        <div class="form-group">
+          <label class="form-label" for="notice-title">Notice Title</label>
+          <input type="text" id="notice-title" class="form-control" placeholder="e.g. Scheduled Power Outage & Generator Backup" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div class="form-group">
+            <label class="form-label" for="notice-category">Category</label>
+            <select id="notice-category" class="form-control">
+              <option value="GENERAL">📢 General Notice</option>
+              <option value="MESS">🍛 Mess & Dining</option>
+              <option value="MAINTENANCE">🔧 Repairs & Water</option>
+              <option value="EVENT">🎉 Event / Meeting</option>
+              <option value="URGENT">🚨 Urgent Alert</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="notice-priority">Priority Level</label>
+            <select id="notice-priority" class="form-control">
+              <option value="NORMAL">Normal</option>
+              <option value="IMPORTANT" selected>Important</option>
+              <option value="URGENT">🚨 Urgent</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="notice-content">Detailed Notice Content</label>
+          <textarea id="notice-content" class="form-control" rows="4" placeholder="Write announcement details for boarders..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="notice-image-url">Image / Poster URL (Optional)</label>
+          <input type="url" id="notice-image-url" class="form-control" placeholder="https://example.com/poster.jpg or image link">
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+          <button type="button" class="btn btn-secondary" onclick="document.getElementById('admin-notice-modal').classList.remove('active')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Publish Announcement</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

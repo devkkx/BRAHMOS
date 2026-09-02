@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Preference - BRAHMOS BHAWAN</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand-icon">🏠</div>
+        <div>
+          <div class="sidebar-brand-title">BRAHMOS</div>
+          <div class="sidebar-brand-subtitle">Bhawan Hostel</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/student/dashboard.html" class="nav-link">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="/student/food-preference.html" class="nav-link active">
+          <span class="nav-icon">🍛</span>
+          <span class="nav-text">Food Preference</span>
+        </a>
+        <a href="/student/complaints.html" class="nav-link">
+          <span class="nav-icon">🚨</span>
+          <span class="nav-text">My Complaints</span>
+        </a>
+        <a href="/student/profile.html" class="nav-link">
+          <span class="nav-icon">👤</span>
+          <span class="nav-text">My Profile</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-profile-badge">
+          <div class="avatar user-avatar-display">U</div>
+          <div class="user-info">
+            <div class="user-name user-name-display">Loading...</div>
+            <div class="user-role user-room-display">Boarder</div>
+          </div>
+          <a href="#" class="btn-logout" title="Logout" style="color: var(--text-muted); text-decoration: none;">🚪</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <h1 class="page-title">Weekly Mess Food Selection</h1>
+        <div class="topbar-actions">
+          <span class="date-pill">🗓 Current Week</span>
+        </div>
+      </header>
+
+      <div class="content-body">
+        <!-- Rule Reminder Banner -->
+        <div class="glass-panel" style="padding: 18px 24px; border-left: 4px solid var(--accent-primary); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h4 style="color: var(--text-primary); margin-bottom: 4px;">📌 Selection & Editing Rules</h4>
+            <p style="font-size: 0.88rem;">Select <strong>🥗 Veg</strong> or <strong>🍗 Non-Veg</strong> for Lunch & Dinner (Tuesday to Sunday). Monday meals are fixed for all boarders.</p>
+          </div>
+          <div style="font-size: 0.82rem; color: #a5b4fc; font-weight: 700;">
+            ⏰ <strong>8-Hour Cutoff Rule:</strong> Edits allowed at least 8 hours prior to meal (Lunch: Cutoff 5:00 AM • Dinner: Cutoff 12:00 PM). Single edit per meal.
+          </div>
+        </div>
+
+        <!-- Weekly Meal Grid -->
+        <div class="meal-grid" id="weekly-meal-grid">
+          <p style="color: var(--text-muted); grid-column: 1 / -1; text-align: center; padding: 40px;">
+            Loading weekly meal preference grid...
+          </p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/student.js"></script>
+</body>
+</html>

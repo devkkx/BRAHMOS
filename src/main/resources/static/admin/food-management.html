@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Management - BRAHMOS BHAWAN Admin</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand-icon">🛡️</div>
+        <div>
+          <div class="sidebar-brand-title">BRAHMOS</div>
+          <div class="sidebar-brand-subtitle">Admin Control</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/admin/dashboard.html" class="nav-link">
+          <span class="nav-icon">📊</span>
+          <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="/admin/food-management.html" class="nav-link active">
+          <span class="nav-icon">🍛</span>
+          <span class="nav-text">Food Management</span>
+        </a>
+        <a href="/admin/complaints.html" class="nav-link">
+          <span class="nav-icon">🚨</span>
+          <span class="nav-text">Complaints Desk</span>
+        </a>
+        <a href="/admin/students.html" class="nav-link">
+          <span class="nav-icon">👥</span>
+          <span class="nav-text">Boarders Directory</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-profile-badge">
+          <div class="avatar user-avatar-display" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">A</div>
+          <div class="user-info">
+            <div class="user-name user-name-display">Warden Admin</div>
+            <div class="user-role">Hostel Administrator</div>
+          </div>
+          <a href="#" class="btn-logout" title="Logout" style="color: var(--text-muted); text-decoration: none;">🚪</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <h1 class="page-title">Mess Food Management & Preparation Counts</h1>
+        <div class="topbar-actions">
+          <button class="btn btn-success" id="btn-open-excel-modal">
+            <span>📥 Export Excel Report</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="content-body">
+        <!-- Filter Controls -->
+        <div class="glass-panel" style="padding: 20px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+          <div class="form-group" style="margin-bottom: 0; min-width: 180px;">
+            <label class="form-label" for="filter-food-date">Target Date</label>
+            <input type="date" id="filter-food-date" class="form-control">
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0; min-width: 180px;">
+            <label class="form-label" for="filter-food-meal">Meal Filter</label>
+            <select id="filter-food-meal" class="form-control">
+              <option value="ALL">All Meals (Lunch & Dinner)</option>
+              <option value="LUNCH">☀️ Lunch</option>
+              <option value="DINNER">🌙 Dinner</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Live Count Cards -->
+        <div class="stats-grid" id="food-summary-cards">
+          <p style="color: var(--text-muted); grid-column: 1 / -1;">Loading meal summary counts...</p>
+        </div>
+
+        <!-- Roster Table -->
+        <div class="glass-panel" style="padding: 24px;">
+          <h3 style="margin-bottom: 16px;">📋 Boarders Food Preference Roster</h3>
+          <div class="table-responsive">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Student ID</th>
+                  <th>Student Name</th>
+                  <th>Hostel Block</th>
+                  <th>Room No</th>
+                  <th>Date</th>
+                  <th>Day</th>
+                  <th>Meal</th>
+                  <th>Preference</th>
+                </tr>
+              </thead>
+              <tbody id="admin-food-roster-body">
+                <tr>
+                  <td colspan="8" style="text-align: center; padding: 30px; color: var(--text-muted);">
+                    Loading food roster...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Interactive Excel Export Options Modal -->
+  <div class="modal-backdrop" id="excel-export-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>📥 Export Mess Excel Report</h3>
+        <button class="modal-close" id="btn-close-excel-modal">&times;</button>
+      </div>
+      <form id="excel-export-form">
+        <div class="form-group">
+          <label class="form-label" for="export-modal-date">Select Report Target Date</label>
+          <input type="date" id="export-modal-date" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="export-modal-meal">Select Meal Type</label>
+          <select id="export-modal-meal" class="form-control" required>
+            <option value="ALL">☀️🌙 Both Lunch & Dinner</option>
+            <option value="LUNCH">☀️ Lunch Only</option>
+            <option value="DINNER">🌙 Dinner Only</option>
+          </select>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+          <button type="button" class="btn btn-secondary" onclick="document.getElementById('excel-export-modal').classList.remove('active')">Cancel</button>
+          <button type="submit" class="btn btn-success" id="btn-confirm-excel-download">📥 Download Excel File</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

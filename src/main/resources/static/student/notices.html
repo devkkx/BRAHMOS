@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notice Board - BRAHMOS BHAWAN</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand-icon">🏠</div>
+        <div>
+          <div class="sidebar-brand-title">BRAHMOS</div>
+          <div class="sidebar-brand-subtitle">Bhawan Hostel</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/student/dashboard.html" class="nav-link">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="/student/notices.html" class="nav-link active">
+          <span class="nav-icon">📢</span>
+          <span class="nav-text">Notice Board</span>
+        </a>
+        <a href="/student/food-preference.html" class="nav-link">
+          <span class="nav-icon">🍛</span>
+          <span class="nav-text">Food Preference</span>
+        </a>
+        <a href="/student/complaints.html" class="nav-link">
+          <span class="nav-icon">🚨</span>
+          <span class="nav-text">My Complaints</span>
+        </a>
+        <a href="/student/profile.html" class="nav-link">
+          <span class="nav-icon">👤</span>
+          <span class="nav-text">My Profile</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-profile-badge">
+          <div class="avatar user-avatar-display">U</div>
+          <div class="user-info">
+            <div class="user-name user-name-display">Loading...</div>
+            <div class="user-role user-room-display">Boarder</div>
+          </div>
+          <a href="#" class="btn-logout" title="Logout" style="color: var(--text-muted); text-decoration: none;">🚪</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="topbar">
+        <h1 class="page-title">📢 Official Hostel Notice Board</h1>
+        <div class="topbar-actions">
+          <span class="date-pill">📌 BRAHMOS BHAWAN Announcements</span>
+        </div>
+      </header>
+
+      <div class="content-body">
+        <div id="student-notices-container" style="display: flex; flex-direction: column; gap: 20px;">
+          <p style="color: var(--text-muted); text-align: center; padding: 40px;">Loading hostel notices...</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/student.js"></script>
+</body>
+</html>
